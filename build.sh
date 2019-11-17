@@ -14,7 +14,7 @@ elif [[ $1 == "prod" ]];
 cat >.env <<EOL
 NODE_PATH=./src
 REACT_APP_ENV='production'
-REACT_APP_API_URL=http://mars.theblueground.net/api
+REACT_APP_API_URL=https://voda-react-assessment.herokuapp.com/
 
 EOL
 echo "Production environment created"
