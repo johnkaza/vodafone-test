@@ -5,11 +5,12 @@ const validationSections = {
     phone: yup
       .string()
       .trim()
+      .matches(/^([+]?\d{1,2}[.-\s]?)?([0-9]{10})$/, 'Please enter a real number')
       .required('Phone is required'),
     email: yup
       .string()
       .trim()
-      .email()
+      .email('Email must be a valid email')
       .required('Email is required'),
     password: yup
       .string()
