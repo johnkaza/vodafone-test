@@ -5,12 +5,22 @@ import { colors } from 'helpers/theme';
 
 class Input extends Component {
   render() {
-    const { type, name, label, id, error, touched, InputWrapperCss, ...rest } = this.props;
+    const {
+      type,
+      name,
+      label,
+      id,
+      error,
+      touched,
+      InputWrapperCss,
+      InputCss,
+      ...rest
+    } = this.props;
 
     return (
       <InputWrapper InputWrapperCss={InputWrapperCss}>
         {label && id && <label for={id}>Email address</label>}
-        <StyledInput name={name} type={type} {...rest} />
+        <StyledInput InputCss={InputCss} name={name} type={type} {...rest} />
         {error && touched && id && <Error id={id}>{error}</Error>}
       </InputWrapper>
     );
@@ -37,6 +47,8 @@ const StyledInput = styled.input`
     outline: 0;
     box-shadow: none;
   }
+
+  ${props => (props.InputCss ? props.InputCss : '')};
 `;
 
 const Error = styled.small`

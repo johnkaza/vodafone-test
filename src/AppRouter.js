@@ -12,6 +12,7 @@ class AppRouter extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/page-2" component={Page} />
         </Switch>
       </Router>

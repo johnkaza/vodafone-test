@@ -20,16 +20,22 @@ class Slider extends Component {
     const { slides } = this.props;
 
     return (
-      <Swiper {...params}>
-        {slides.map((val, key) => {
-          return (
-            <StyledSlide key={key}>
-              <StyledH1>{val.title}</StyledH1>
-              <div>{val.subtitle}</div>
-            </StyledSlide>
-          );
-        })}
-      </Swiper>
+      <React.Fragment>
+        {slides ? (
+          <Swiper {...params}>
+            {slides.map((val, key) => {
+              return (
+                <StyledSlide key={key}>
+                  <StyledH1>{val.title}</StyledH1>
+                  <div>{val.subtitle}</div>
+                </StyledSlide>
+              );
+            })}
+          </Swiper>
+        ) : (
+          ''
+        )}
+      </React.Fragment>
     );
   }
 }

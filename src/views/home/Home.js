@@ -3,7 +3,7 @@ import App from 'App';
 import styled from 'styled-components';
 import { getData } from './_actions';
 
-import Header from 'views/partials/Header';
+import Header from 'views/partials/header/Header';
 import Tab from 'atoms/Tab';
 import Container from 'styledComponents/Container';
 import StyledH1 from 'styledComponents/StyledH1';
@@ -27,7 +27,6 @@ class Home extends Component {
     const response = await getData({});
 
     if (response) {
-      console.log(response.data, 'here');
       this.setState({
         ...this.state,
         data: response.data[0],

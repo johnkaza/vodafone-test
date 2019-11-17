@@ -6,7 +6,9 @@ export const colors = {
   dodgerBlue: '#1292EE',
   slateGray: '#748494',
   wildSand: '#F5F5F5',
-  denim: '#166DD5'
+  denim: '#166DD5',
+  shark: '#212424',
+  mineShaft: '#333333'
 };
 
 export const HeaderColors = {

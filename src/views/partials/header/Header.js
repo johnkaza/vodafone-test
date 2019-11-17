@@ -4,40 +4,40 @@ import styled from 'styled-components';
 import Navbar from 'atoms/Navbar';
 import Image from 'atoms/Image';
 
-import Slider from '../../components/Slider';
+import Slider from 'components/Slider';
 
 import Button from 'styledComponents/Button';
 import TinyContainer from 'styledComponents/TinyContainer';
+import Search from '../search/Search';
 
 import { slugifyText } from 'helpers/general';
 import { HeaderColors } from 'helpers/theme';
 import { general } from 'helpers/images';
 
-import { getMenu } from './_actions';
-
-const slides = [
-  {
-    title: 'Slide 1',
-    subtitle: `text for slide 1`
-  },
-  {
-    title: 'Slide 2',
-    subtitle: `text for slide 2`
-  },
-  {
-    title: 'Slide 3',
-    subtitle: `text for slide 3`
-  }
-];
+import { getMenu, getSlider } from './_actions';
 
 class Header extends Component {
   state = {
-    menu: []
+    menu: [],
+    slides: [],
+    searchOpened: false
   };
 
   componentDidMount() {
     this.getMenu();
+    this.getSlider();
   }
+
+  getSlider = async () => {
+    const response = await getSlider({});
+
+    if (response) {
+      this.setState({
+        ...this.state,
+        slides: response.data
+      });
+    }
+  };
 
   getMenu = async () => {
     const response = await getMenu({});
@@ -47,8 +47,6 @@ class Header extends Component {
 
       let menu = [];
       data.map(val => {
-        console.log(slugifyText(val.title), 'slug');
-
         menu = [
           ...menu,
           {
@@ -65,15 +63,25 @@ class Header extends Component {
     }
   };
 
+  toggleSearch() {
+    const { searchOpened } = this.state;
+
+    this.setState({
+      ...this.state,
+      searchOpened: !searchOpened
+    });
+  }
+
   render() {
-    const { menu } = this.state;
+    const { menu, slides, searchOpened } = this.state;
 
     return (
       <StyledHeader>
+        <Search opened={searchOpened} onClose={() => this.toggleSearch()} />
         <TinyContainer>
           <StyledNavbar>
             <Navbar links={menu} />
-            <Button>
+            <Button onClick={() => this.toggleSearch()}>
               <Image src={general.search}></Image>
             </Button>
           </StyledNavbar>
