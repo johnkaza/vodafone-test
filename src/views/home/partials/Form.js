@@ -10,9 +10,14 @@ import { colors } from 'helpers/theme';
 class Form extends Component {
   static defaultProps = {
     defaultValues: {
+      phone: '',
       email: '',
       password: ''
     }
+  };
+
+  handleSubmit = values => {
+    console.log(values, 'values');
   };
 
   render() {
@@ -36,59 +41,62 @@ class Form extends Component {
             dirty,
             isValid
           }) => (
-            <HelpForm onSubmit={handleSubmit}>
-              <Input
-                type="tel"
-                name="phone"
-                id="phone"
-                placeholder={formLabels && formLabels[0]}
-                value={values.phone}
-                onChange={e => {
-                  handleChange(e);
-                }}
-                onBlur={handleBlur}
-                error={errors['phone']}
-                touched={touched['phone']}
-                InputWrapperCss={InputWrapperCss}
-              />
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder={formLabels && formLabels[1]}
-                value={values.email}
-                onChange={e => {
-                  handleChange(e);
-                }}
-                onBlur={handleBlur}
-                error={errors['email']}
-                touched={touched['email']}
-                InputWrapperCss={InputWrapperCss}
-              />
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder={formLabels && formLabels[2]}
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors['password']}
-                touched={touched['password']}
-                InputWrapperCss={InputWrapperCss}
-              />
-              <Actions className="">
-                <Button
-                  color={colors.white}
-                  bgColor={colors.denim}
-                  buttonCss={submitButtonCss}
-                  type="submit"
-                  disabled={!dirty || !isValid || isSubmitting}
-                >
-                  Sign in
-                </Button>
-              </Actions>
-            </HelpForm>
+            console.log(errors),
+            (
+              <HelpForm onSubmit={handleSubmit}>
+                <Input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  placeholder={formLabels && formLabels[0]}
+                  value={values.phone}
+                  onChange={e => {
+                    handleChange(e);
+                  }}
+                  onBlur={handleBlur}
+                  error={errors['phone']}
+                  touched={touched['phone']}
+                  InputWrapperCss={InputWrapperCss}
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder={formLabels && formLabels[1]}
+                  value={values.email}
+                  onChange={e => {
+                    handleChange(e);
+                  }}
+                  onBlur={handleBlur}
+                  error={errors['email']}
+                  touched={touched['email']}
+                  InputWrapperCss={InputWrapperCss}
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder={formLabels && formLabels[2]}
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors['password']}
+                  touched={touched['password']}
+                  InputWrapperCss={InputWrapperCss}
+                />
+                <Actions className="">
+                  <Button
+                    color={colors.white}
+                    bgColor={colors.denim}
+                    buttonCss={submitButtonCss}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    Sign in
+                  </Button>
+                </Actions>
+              </HelpForm>
+            )
           )}
         </Formik>
       </FormWrapper>

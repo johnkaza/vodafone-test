@@ -2,9 +2,24 @@ import * as yup from 'yup'; // for everything
 
 const validationSections = {
   helpForm: yup.object().shape({
-    email: yup.string().email(),
-    password: yup.string().required('Password is required'),
-    phone: yup.string()
+    phone: yup
+      .string()
+      .trim()
+      .required('Phone is required'),
+    email: yup
+      .string()
+      .trim()
+      .email()
+      .required('Email is required'),
+    password: yup
+      .string()
+      .trim()
+      .min(8, 'Password must have be at least 8 characters')
+      .matches(/[@$!%*#?&]/, 'Password must have at least one special case character')
+      .matches(/[0-9]/, 'Password must have at least one number')
+      .matches(/[a-z]/, 'Password must have at least one lowercase character')
+      .matches(/[A-Z]/, 'Password must have at least one uppercase character')
+      .required('Password is required')
   })
 };
 
