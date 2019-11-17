@@ -16,6 +16,8 @@ class Form extends Component {
   };
 
   render() {
+    const { formLabels } = this.props;
+
     return (
       <FormWrapper>
         <Formik
@@ -34,12 +36,26 @@ class Form extends Component {
             dirty,
             isValid
           }) => (
-            <form onSubmit={handleSubmit}>
+            <HelpForm onSubmit={handleSubmit}>
+              <Input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder={formLabels && formLabels[0]}
+                value={values.phone}
+                onChange={e => {
+                  handleChange(e);
+                }}
+                onBlur={handleBlur}
+                error={errors['phone']}
+                touched={touched['phone']}
+                InputWrapperCss={InputWrapperCss}
+              />
               <Input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Email"
+                placeholder={formLabels && formLabels[1]}
                 value={values.email}
                 onChange={e => {
                   handleChange(e);
@@ -47,17 +63,19 @@ class Form extends Component {
                 onBlur={handleBlur}
                 error={errors['email']}
                 touched={touched['email']}
+                InputWrapperCss={InputWrapperCss}
               />
               <Input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Password"
+                placeholder={formLabels && formLabels[2]}
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={errors['password']}
                 touched={touched['password']}
+                InputWrapperCss={InputWrapperCss}
               />
               <Actions className="">
                 <Button
@@ -70,7 +88,7 @@ class Form extends Component {
                   Sign in
                 </Button>
               </Actions>
-            </form>
+            </HelpForm>
           )}
         </Formik>
       </FormWrapper>
@@ -80,6 +98,20 @@ class Form extends Component {
 
 const submitButtonCss = css`
   padding: 16px 32px;
+  border-radius: 2px;
+  max-width: 160px;
+  width: 100%;
+`;
+
+const HelpForm = styled.form`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+const InputWrapperCss = css`
+  max-width: 370px;
 `;
 
 const Actions = styled.div`

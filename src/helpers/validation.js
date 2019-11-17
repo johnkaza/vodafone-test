@@ -3,7 +3,8 @@ import * as yup from 'yup'; // for everything
 const validationSections = {
   helpForm: yup.object().shape({
     email: yup.string().email(),
-    password: yup.string().required('Password is required')
+    password: yup.string().required('Password is required'),
+    phone: yup.string()
   })
 };
 

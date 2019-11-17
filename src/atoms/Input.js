@@ -5,10 +5,10 @@ import { colors } from 'helpers/theme';
 
 class Input extends Component {
   render() {
-    const { type, name, label, id, error, touched, className, ...rest } = this.props;
+    const { type, name, label, id, error, touched, InputWrapperCss, ...rest } = this.props;
 
     return (
-      <InputWrapper className={`form-group ${className ? className : ''}`}>
+      <InputWrapper InputWrapperCss={InputWrapperCss}>
         {label && id && <label for={id}>Email address</label>}
         <StyledInput name={name} type={type} {...rest} />
         {error && touched && id && <Error id={id}>{error}</Error>}
@@ -19,7 +19,9 @@ class Input extends Component {
 
 const InputWrapper = styled.div`
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+
+  ${props => (props.InputWrapperCss ? props.InputWrapperCss : '')};
 `;
 
 const StyledInput = styled.input`
@@ -28,6 +30,8 @@ const StyledInput = styled.input`
   padding: 8px 16px;
   border: none;
   background-color: ${colors.wildSand};
+  border-radius: 2px;
+  font-size: 15px;
 
   &:focus {
     outline: 0;
@@ -36,8 +40,10 @@ const StyledInput = styled.input`
 `;
 
 const Error = styled.small`
+  display: inline-block;
   width: 100%;
-  margin: 8px 0 8px 0px;
+  margin: 8px 0 0 0;
+  color: red;
 
   &:focus {
     outline: 0;
