@@ -4,14 +4,16 @@ import styled from 'styled-components';
 import Navbar from 'atoms/Navbar';
 import Image from 'atoms/Image';
 
-import Slider from './Slider';
+import Slider from '../../components/Slider';
 
 import Button from 'styledComponents/Button';
 import TinyContainer from 'styledComponents/TinyContainer';
 
-import { navbarLinks } from 'helpers/general';
+import { navbarLinks, slugifyText } from 'helpers/general';
 import { HeaderColors } from 'helpers/theme';
 import { general } from 'helpers/images';
+
+import { getMenu } from './_actions';
 
 const slides = [
   {
@@ -29,12 +31,48 @@ const slides = [
 ];
 
 class Header extends Component {
+  state = {
+    menu: []
+  };
+
+  componentDidMount() {
+    this.getMenu();
+  }
+
+  getMenu = async () => {
+    const response = await getMenu({});
+
+    if (response) {
+      let data = response.data;
+
+      let menu = [];
+      data.map(val => {
+        console.log(slugifyText(val.title), 'slug');
+
+        menu = [
+          ...menu,
+          {
+            ...val,
+            path: slugifyText(val.title)
+          }
+        ];
+      });
+
+      this.setState({
+        ...this.state,
+        menu: menu
+      });
+    }
+  };
+
   render() {
+    const { menu } = this.state;
+
     return (
       <StyledHeader>
         <TinyContainer>
           <StyledNavbar>
-            <Navbar links={navbarLinks} />
+            <Navbar links={menu} />
             <Button>
               <Image src={general.search}></Image>
             </Button>

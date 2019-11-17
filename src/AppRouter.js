@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Home from './views/home/Home';
+import Home from 'views/home/Home';
+import Page from 'views/page/Page';
 
 import { Router, Route, Switch } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ class AppRouter extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/page-2" component={Page} />
         </Switch>
       </Router>
     );

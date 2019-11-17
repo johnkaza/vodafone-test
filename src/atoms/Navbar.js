@@ -11,7 +11,7 @@ class Navbar extends Component {
           links.map((val, key) => {
             return (
               <StyledLi key={key}>
-                <StyledA href="/home">Home</StyledA>
+                <StyledA href={'/' + val.path}>{val.title}</StyledA>
               </StyledLi>
             );
           })}

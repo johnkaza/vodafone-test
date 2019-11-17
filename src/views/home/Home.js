@@ -3,7 +3,7 @@ import App from 'App';
 import styled from 'styled-components';
 import { getData } from './_actions';
 
-import Header from 'components/Header';
+import Header from 'views/partials/Header';
 import Tab from 'atoms/Tab';
 import Container from 'styledComponents/Container';
 import StyledH1 from 'styledComponents/StyledH1';
@@ -47,8 +47,6 @@ class Home extends Component {
       visibleSection,
       data: { description, sections }
     } = this.state;
-
-    console.log(visibleSection);
 
     return (
       <App>
