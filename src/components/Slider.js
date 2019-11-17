@@ -21,7 +21,7 @@ class Slider extends Component {
 
     return (
       <React.Fragment>
-        {slides ? (
+        {slides && slides.length > 0 ? (
           <Swiper {...params}>
             {slides.map((val, key) => {
               return (
