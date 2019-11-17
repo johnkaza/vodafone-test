@@ -14,7 +14,7 @@ class Section2 extends Component {
 
     return (
       <React.Fragment>
-        <LeftWrapper>left wrapper</LeftWrapper>
+        <LeftWrapper></LeftWrapper>
         <RightWrapper>
           {formText && <H2>{formText}</H2>}
           <Description>

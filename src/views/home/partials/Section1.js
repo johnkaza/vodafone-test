@@ -6,7 +6,6 @@ class Section1 extends Component {
   render() {
     return (
       <div>
-        section1
         <Grid>
           <LayeredImage />
         </Grid>
