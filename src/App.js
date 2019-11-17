@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import GlobalStyles from 'styledComponents/Container';
 import './App.css';
 
 class App extends Component {
@@ -6,8 +8,9 @@ class App extends Component {
     const { children } = this.props;
 
     return (
-      <div id="app-container" className="container">
+      <div id="app-container">
         {children}
+        <GlobalStyles />
       </div>
     );
   }
