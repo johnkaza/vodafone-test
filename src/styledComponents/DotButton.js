@@ -37,6 +37,13 @@ const DotButton = styled.button`
       opacity: 1;
     }
   }
+
+  &.active {
+    &::before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 `;
 
 export default DotButton;

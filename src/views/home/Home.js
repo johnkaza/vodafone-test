@@ -59,6 +59,7 @@ class Home extends Component {
               sections.map((section, key) => {
                 return (
                   <DotButton
+                    className={section.id == visibleSection ? 'active' : ''}
                     key={key}
                     onClick={() => this.changeTab(section.id)}
                     bgColor={colors.dodgerBlue}

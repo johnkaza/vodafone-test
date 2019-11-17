@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { navBarColors } from 'helpers/theme';
 
 class Navbar extends Component {
+  isActiveLink = path => window.location.pathname.indexOf(path) !== -1;
+
   render() {
     const { links } = this.props;
     return (
@@ -11,7 +13,12 @@ class Navbar extends Component {
           links.map((val, key) => {
             return (
               <StyledLi key={key}>
-                <StyledA href={'/' + val.path}>{val.title}</StyledA>
+                <StyledA
+                  className={this.isActiveLink(val.path) ? 'active' : ''}
+                  href={'/' + val.path}
+                >
+                  {val.title}
+                </StyledA>
               </StyledLi>
             );
           })}
@@ -55,6 +62,13 @@ const StyledA = styled.a`
   }
 
   &:hover {
+    &::before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &.active {
     &::before {
       visibility: visible;
       opacity: 1;
