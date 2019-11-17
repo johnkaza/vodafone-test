@@ -9,7 +9,7 @@ import Slider from '../../components/Slider';
 import Button from 'styledComponents/Button';
 import TinyContainer from 'styledComponents/TinyContainer';
 
-import { navbarLinks, slugifyText } from 'helpers/general';
+import { slugifyText } from 'helpers/general';
 import { HeaderColors } from 'helpers/theme';
 import { general } from 'helpers/images';
 
