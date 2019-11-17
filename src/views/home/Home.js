@@ -65,7 +65,7 @@ class Home extends Component {
                     bgColor={colors.dodgerBlue}
                     type="button"
                   >
-                    Section {section.id}
+                    Section {key + 1}
                   </DotButton>
                 );
               })}
