@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 class LayeredImage extends Component {
   render() {
-    const { src } = this.props;
+    const { src, alt } = this.props;
     return (
       <ImageWrapper>
-        <img src={src}></img>
+        <img src={src} alt={alt}></img>
         <ImageLayer></ImageLayer>
       </ImageWrapper>
     );

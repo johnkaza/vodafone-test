@@ -8,8 +8,8 @@ class App extends Component {
 
     return (
       <div id="app-container">
-        {children}
         <GlobalStyles />
+        {children}
       </div>
     );
   }
