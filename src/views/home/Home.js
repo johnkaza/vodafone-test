@@ -6,8 +6,8 @@ import { getData } from './_actions';
 import Header from 'views/partials/header/Header';
 import Tab from 'atoms/Tab';
 import Container from 'styledComponents/Container';
-import StyledH1 from 'styledComponents/StyledH1';
-import StyledDotButton from 'styledComponents/StyledDotButton';
+import H1 from 'styledComponents/H1';
+import DotButton from 'styledComponents/DotButton';
 import Section1 from './partials/Section1';
 import Section2 from './partials/Section2';
 
@@ -52,20 +52,20 @@ class Home extends Component {
         <Header />
         <Container>
           <HeadingWrapper>
-            <StyledH1>{description}</StyledH1>
+            <H1>{description}</H1>
           </HeadingWrapper>
           <TabsButtonsWrapper>
             {sections &&
               sections.map((section, key) => {
                 return (
-                  <StyledDotButton
+                  <DotButton
                     key={key}
                     onClick={() => this.changeTab(section.id)}
                     bgColor={colors.dodgerBlue}
                     type="button"
                   >
                     Section {section.id}
-                  </StyledDotButton>
+                  </DotButton>
                 );
               })}
           </TabsButtonsWrapper>

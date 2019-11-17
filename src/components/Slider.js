@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import 'swiper/css/swiper.css';
 
-import StyledH1 from 'styledComponents/StyledH1';
+import H1 from 'styledComponents/H1';
 
 const params = {
   pagination: {
@@ -26,7 +26,7 @@ class Slider extends Component {
             {slides.map((val, key) => {
               return (
                 <StyledSlide key={key}>
-                  <StyledH1>{val.title}</StyledH1>
+                  <H1>{val.title}</H1>
                   <div>{val.subtitle}</div>
                 </StyledSlide>
               );

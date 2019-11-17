@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledDotButton = styled.button`
+const DotButton = styled.button`
   position: relative;
   background-color: transparent;
   border-color: transparent;
@@ -39,4 +39,4 @@ const StyledDotButton = styled.button`
   }
 `;
 
-export default StyledDotButton;
+export default DotButton;
