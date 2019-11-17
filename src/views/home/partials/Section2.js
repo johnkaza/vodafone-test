@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Form from './Form';
 
 import { colors } from 'helpers/theme';
+import { device } from 'helpers/breakpoints';
 
 class Section2 extends Component {
   render() {
@@ -29,12 +30,20 @@ class Section2 extends Component {
 
 const LeftWrapper = styled.div`
   display: inline-block;
-  width: 50%;
+  width: 100%;
+
+  ${device.tabletL} {
+    width: 50%;
+  }
 `;
 
 const RightWrapper = styled.div`
   display: inline-block;
-  width: 50%;
+  width: 100%;
+
+  ${device.tabletL} {
+    width: 50%;
+  }
 `;
 
 const H2 = styled.h2`
