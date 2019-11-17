@@ -88,7 +88,7 @@ class Form extends Component {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Sign in
+                  Submit
                 </Button>
               </Actions>
             </HelpForm>
